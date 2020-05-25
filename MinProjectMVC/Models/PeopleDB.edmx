@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PeopleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PeopleDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Incomes">
           <Key>
             <PropertyRef Name="IncomeID" />
@@ -21,6 +21,7 @@
           <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="PersonAge" Type="int" Nullable="false" />
+          <Property Name="PersonIsEmployed" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Incomes_People">
           <End Role="People" Type="Self.People" Multiplicity="1" />
@@ -42,8 +43,7 @@
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PeopleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -65,6 +65,7 @@
           <Property Name="PersonName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PersonAge" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_People" FromRole="People" ToRole="Incomes" />
+          <Property Name="PersonIsEmployed" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Incomes_People">
           <End Role="People" Type="Self.People" Multiplicity="1" />
@@ -105,6 +106,7 @@
           <EntitySetMapping Name="People">
             <EntityTypeMapping TypeName="PeopleDBModel.People">
               <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="PersonIsEmployed" ColumnName="PersonIsEmployed" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="PersonAge" ColumnName="PersonAge" />

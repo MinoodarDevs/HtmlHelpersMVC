@@ -1,0 +1,46 @@
+﻿@model List<MinProjectMVC.Models.People>
+
+@{
+    ViewBag.Title = "لیست افراد";
+}
+
+<style>
+    th {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink("افزودن شخص","Create",null,new {@class="btn btn-primary"})
+<hr />
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr class="text-center">
+            <th>نام شخص</th>
+            <th>سن شخص</th>
+            <th>وضعیت اشتغال</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonName</td>
+                <td>@item.PersonAge</td>
+                <td>
+                    @if (item.PersonIsEmployed)
+                    {
+                        <i class="fas fa-check-circle text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-times-circle text-danger"></i>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

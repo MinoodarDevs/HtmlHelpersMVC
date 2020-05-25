@@ -7,11 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using MinProjectMVC.Models.MetaData;
+
 namespace MinProjectMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
+    [MetadataType(typeof(PeopleMetaData))]
     public partial class People
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +27,7 @@ namespace MinProjectMVC.Models
         public int PersonID { get; set; }
         public string PersonName { get; set; }
         public int PersonAge { get; set; }
+        public bool PersonIsEmployed { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incomes> Incomes { get; set; }
