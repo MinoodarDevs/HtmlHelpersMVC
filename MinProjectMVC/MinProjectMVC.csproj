@@ -130,6 +130,7 @@
     <Content Include="Views\Home\Index _Old.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\_Numbers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

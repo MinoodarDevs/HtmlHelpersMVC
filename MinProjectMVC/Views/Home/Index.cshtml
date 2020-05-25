@@ -37,22 +37,27 @@
 
 <table class="table table-bordered table-hover">
     <thead>
-        <tr>
-            <th>نام شخص</th>
-            <th>درآمد</th>
-            <th>تاریخ واریز</th>
+    <tr>
+        <th>نام شخص</th>
+        <th>درآمد</th>
+        <th>تاریخ واریز</th>
 
-        </tr>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.People.PersonName</td>
-                <td>@item.IncomeAmount</td>
-                <td>@item.IncomeDate.ToShamsi()</td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.People.PersonName</td>
+            <td>@item.IncomeAmount</td>
+            <td>@item.IncomeDate.ToShamsi()</td>
+        </tr>
+    }
     </tbody>
 
 </table>
+
+<div>
+    @Html.Action("GenerateRandomNumbers","People",new {count=5})
+
+</div>
