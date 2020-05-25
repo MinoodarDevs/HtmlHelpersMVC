@@ -1,0 +1,46 @@
+﻿@using System.Web.UI.WebControls
+@using MinProjectMVC.Extensions
+@model List<MinProjectMVC.Models.Incomes>
+
+
+@{
+    ViewBag.Title = "اطلاعات درآمد";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">نام شخص</label>
+        <div class="col-md-4">
+            <input type="text" id="personName" name="personName" value="@ViewBag.PersonName" class="form-control" placeholder="نام شخص را وارد کنید ..."/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+            <input type="submit" value="جستجو" class="btn btn-primary"/>
+        </div>
+    </div>
+</form>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>نام شخص</th>
+            <th>درآمد</th>
+            <th>تاریخ واریز</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.People.PersonName</td>
+                <td>@item.IncomeAmount</td>
+                <td>@item.IncomeDate.ToShamsi()</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
